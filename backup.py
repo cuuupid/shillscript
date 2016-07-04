@@ -1,9 +1,4 @@
 import sys, os
-import smtplib
-from email.mime.text import MIMEText
-import email.utils
-from email_server import CustomSMTPServer
-import subprocess
 
 class MonicaLewinsky:
 
@@ -23,25 +18,10 @@ class MonicaLewinsky:
             self.prompted.remove(self.prompted[0])
         if("hillary repeat" in cmd and "hillary repeat" not in self.lastCmd):
             self.processCommand(self.lastCmd)
-        if("**email " in cmd):
-            message = ""
-            for x in range(6,list(cmd).index("$")):
-                message = message + list(cmd)[x]
-            msg = MIMEText(message)
-            msg['To'] = email.utils.formataddr(('Recipient', cmd[list(cmd).index("$")+2:list(cmd).index("#")-1] ))
-            msg['From'] = email.utils.formataddr(('Author','shillary.clinton@secretaryofstate.gov'))
-            msg['Subject'] = cmd[list(cmd).index("#")+2:len(list(cmd))]
-            server = smtplib.SMTP('127.0.0.1',1025)
-            server.set_debuglevel(True)
-            try:
-                server.sendmail('shillary.clinton@secretaryofstate.gov',[cmd[list(cmd).index("$")+2:list(cmd).index("#")-1]], msg.as_string())
-            finally:
-                server.quit()
         self.lastCmd = cmd
 
 def main():
     print("[+] Welcome to the Clinton Campaign")
-    print()
     print()
     filename = sys.argv[1]
     if(".benghazi" not in filename):
