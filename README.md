@@ -14,6 +14,7 @@ python clinton.py clinton.py
 Which could have very disastrous results.
 - helloworld.benghazi for sample code
 - backup.benghazi if you accidentally delete helloworld.benghazi
+- run.py is an experimental script that runs your code then starts up the email server. Same syntax as clinton.py for usage.
 
 ###Usage
 To run code:
